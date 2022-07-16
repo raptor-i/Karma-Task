@@ -3,6 +3,7 @@ import React from "react";
 import Text from "../components/Text";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
+import Colors from "../configs/Colors";
 
 const LoginScreen = () => {
   const HandlerLogin = () => {
@@ -19,15 +20,16 @@ const LoginScreen = () => {
       <View style={styles.form}>
         <TextInput
           placeholder="Kullanıcı adı"
-          placeholderTextColor={"gray"}
-          color="gray"
+          placeholderTextColor={Colors.purpleGray}
+          color={Colors.purpleGray}
           name="account"
         ></TextInput>
         <TextInput
           placeholder="Parola"
-          placeholderTextColor={"gray"}
-          color="gray"
+          placeholderTextColor={Colors.purpleGray}
+          color={Colors.purpleGray}
           name="lock"
+          secureTextEntry
         ></TextInput>
         <Button
           style={styles.giris}

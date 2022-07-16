@@ -10,13 +10,16 @@ const MyTextInput = ({
   name,
   size = 25,
   color,
+  ...otherProps
 }) => {
   return (
     <View style={[styles.container, style]}>
-      <Icon name={name} size={size} color={color}></Icon>
+      {name && <Icon name={name} size={size} color={color}></Icon>}
       <TextInput
+        style={styles.inputField}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
+        {...otherProps}
       ></TextInput>
     </View>
   );
@@ -29,9 +32,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.purpleLight,
     flexDirection: "row",
     borderRadius: 22,
-    height: 40,
+    height: 50,
     marginVertical: 15,
     alignItems: "center",
-    padding: 5,
+    padding: 10,
+  },
+  inputField: {
+    fontSize: 20,
+    marginLeft: 10,
+    color: Colors.purpleGray,
   },
 });
