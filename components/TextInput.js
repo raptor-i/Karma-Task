@@ -2,14 +2,15 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 
 import Colors from "../configs/Colors";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "./Icon";
+
 const MyTextInput = ({
   placeholder,
   placeholderTextColor,
   style,
   name,
   size = 25,
-  color,
+  color = Colors.purpleGray,
   ...otherProps
 }) => {
   return (

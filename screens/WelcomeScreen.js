@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 50,
     width: "80%",
+    padding: 10,
   },
   text: {
     textAlign: "center",

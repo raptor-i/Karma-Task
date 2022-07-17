@@ -3,13 +3,19 @@ import React from "react";
 
 import Colors from "../configs/Colors";
 import Text from "./Text";
-
-const Button = ({ onPress, title, style }) => {
+import Icon from "./Icon";
+const Button = ({ onPress, title, style, name }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={[styles.container, style]}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
+    <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
+      {name && (
+        <Icon
+          style={styles.Icon}
+          name={name}
+          size={25}
+          color={Colors.purpleDark}
+        ></Icon>
+      )}
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -22,8 +28,13 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 45,
     borderRadius: 15,
-    justifyContent: "center",
     marginVertical: 17,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Icon: {
+    marginRight: 10,
   },
   title: {
     textAlign: "center",
