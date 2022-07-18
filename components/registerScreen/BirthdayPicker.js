@@ -3,7 +3,13 @@ import React from "react";
 
 import Text from "../Text";
 import DatePicker from "../DatePicker";
+import { atom, useAtom } from "jotai";
+
+const RegisterBirthDay = atom(new Date());
 const BirthdayPicker = () => {
+  const [birthday, setBirthday] = useAtom(RegisterBirthDay);
+
+  console.log(birthday);
   return (
     <View>
       <Text
@@ -11,7 +17,7 @@ const BirthdayPicker = () => {
       >
         Doğum Tarihi
       </Text>
-      <DatePicker></DatePicker>
+      <DatePicker onDateChange={setBirthday} date={birthday}></DatePicker>
     </View>
   );
 };

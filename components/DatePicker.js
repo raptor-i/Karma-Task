@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React, { useState } from "react";
 
 import DatePicker from "react-native-date-picker";
-const MyDatePicker = () => {
+const MyDatePicker = ({ ...otherProps }) => {
   const [date, setDate] = useState(new Date());
   const Now = new Date().toISOString().slice(0, 10);
 
@@ -17,6 +17,7 @@ const MyDatePicker = () => {
         fadeToColor="none"
         androidVariant="iosClone"
         maximumDate={new Date(Now)}
+        {...otherProps}
       />
     </View>
   );

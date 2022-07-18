@@ -3,13 +3,13 @@ import React from "react";
 
 import Text from "../components/Text";
 import Button from "../components/Button";
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   const HandlerLogin = () => {
-    console.log("Logged in");
+    navigation.navigate("Giris");
   };
 
   const HandlerRegister = () => {
-    console.log("Kayıt ol ");
+    navigation.navigate("KayitOl");
   };
   return (
     <ImageBackground

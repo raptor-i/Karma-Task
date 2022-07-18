@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import UserListings from "./UserListings";
 import Icon from "../components/Icon";
 import Colors from "../configs/Colors";
+import NotificationsScreen from "./NotificationsScreen";
 
 const MainScreen = () => {
   const Tab = createBottomTabNavigator();
@@ -35,7 +36,7 @@ const MainScreen = () => {
           options={{ title: "User Listings" }}
           component={UserListings}
         />
-        <Tab.Screen name="Notifications" component={UserListings} />
+        <Tab.Screen name="Notifications" component={NotificationsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

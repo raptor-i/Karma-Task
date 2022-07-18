@@ -7,9 +7,13 @@ import Button from "../components/Button";
 import BirthdayPicker from "../components/registerScreen/BirthdayPicker";
 import PPimagePicker from "../components/registerScreen/PPimagePicker";
 import PassAndKvkk from "../components/registerScreen/PassAndKvkk";
+import { atom, useAtom } from "jotai";
 
-const RegisterScreen = () => {
+const RegisterName = atom("");
+
+const RegisterScreen = ({ navigation }) => {
   const [page, setPage] = useState(0);
+  const [name, setName] = useAtom(RegisterName);
 
   const HandlerNext = () => {
     if (page > 2) return;
@@ -19,7 +23,10 @@ const RegisterScreen = () => {
 
   const HandlerBack = () => {
     console.log("Back");
-    if (page < 1) return;
+    if (page < 1) {
+      navigation.navigate("Welcome");
+      return;
+    }
     setPage(page - 1);
   };
 
@@ -34,7 +41,12 @@ const RegisterScreen = () => {
       <Text style={styles.kayitOl}>Kayıt Ol</Text>
       {page === 0 && (
         <View style={styles.textInputContainer}>
-          <TextInput placeholder="Kullanıcı Adı" name="account"></TextInput>
+          <TextInput
+            placeholder="Kullanıcı Adı"
+            name="account"
+            value={name}
+            onChangeText={(text) => setName(text)}
+          ></TextInput>
         </View>
       )}
       {page === 1 && (
@@ -79,7 +91,7 @@ const RegisterScreen = () => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
-  button: { width: "30%", marginHorizontal: 50, marginBottom: 30 },
+  button: { width: "30%", marginHorizontal: 50, marginBottom: 12 },
   buttonsContainer: {
     flexDirection: "row",
   },
