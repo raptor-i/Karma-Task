@@ -1,11 +1,17 @@
 import { StyleSheet, View, ImageBackground } from "react-native";
 import React from "react";
+
 import Text from "../components/Text";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
 import Colors from "../configs/Colors";
+import { useAtom } from "jotai";
+import store from "../store/state";
 
 const LoginScreen = () => {
+  const [nickname, setNickname] = useAtom(store.passwordAtom);
+  const [password, setPassword] = useAtom(store.nicknameAtom);
+
   const HandlerLogin = () => {
     console.log("Giriş yapıldı");
   };
@@ -23,6 +29,8 @@ const LoginScreen = () => {
           placeholderTextColor={Colors.purpleGray}
           color={Colors.purpleGray}
           name="account"
+          value={nickname}
+          onChangeText={(text) => setNickname(text)}
         ></TextInput>
         <TextInput
           placeholder="Parola"
@@ -30,6 +38,8 @@ const LoginScreen = () => {
           color={Colors.purpleGray}
           name="lock"
           secureTextEntry
+          value={password}
+          onChangeText={(text) => setPassword(text)}
         ></TextInput>
         <Button
           style={styles.giris}

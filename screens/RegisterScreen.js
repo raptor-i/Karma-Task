@@ -7,22 +7,19 @@ import Button from "../components/Button";
 import BirthdayPicker from "../components/registerScreen/BirthdayPicker";
 import PPimagePicker from "../components/registerScreen/PPimagePicker";
 import PassAndKvkk from "../components/registerScreen/PassAndKvkk";
-import { atom, useAtom } from "jotai";
-
-const RegisterName = atom("");
+import { useAtom } from "jotai";
+import store from "../store/state";
 
 const RegisterScreen = ({ navigation }) => {
   const [page, setPage] = useState(0);
-  const [name, setName] = useAtom(RegisterName);
+  const [name, setName] = useAtom(store.RegisterName);
 
   const HandlerNext = () => {
     if (page > 2) return;
-    console.log("Next");
     setPage(page + 1);
   };
 
   const HandlerBack = () => {
-    console.log("Back");
     if (page < 1) {
       navigation.navigate("Welcome");
       return;

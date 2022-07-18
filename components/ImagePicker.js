@@ -3,9 +3,12 @@ import React, { useState } from "react";
 
 import { launchImageLibrary } from "react-native-image-picker";
 import Button from "./Button";
+import { useAtom } from "jotai";
+import store from "../store/state";
+import Colors from "../configs/Colors";
 
 const ImagePicker = () => {
-  const [uris, selectedUris] = useState();
+  const [registerImage, setRegisterImage] = useAtom(store.RegisterImage);
 
   const LaunchGallery = async () => {
     const result = await launchImageLibrary({
@@ -15,13 +18,17 @@ const ImagePicker = () => {
       quality: 0.7,
     });
     if (result.assets) {
-      selectedUris(result.assets[0].uri);
-      console.log("assest " + result.assets[0].uri);
+      setRegisterImage(result.assets[0].uri);
     }
   };
   return (
     <View style={styles.container}>
-      <Image style={styles.Image} source={{ uri: uris }}></Image>
+      {registerImage !== "" ? (
+        <Image style={styles.Image} source={{ uri: registerImage }}></Image>
+      ) : (
+        <View style={styles.ImageDefault}></View>
+      )}
+
       <Button
         onPress={LaunchGallery}
         title="Fotoğraf Seç"
@@ -43,5 +50,11 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+  },
+  ImageDefault: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: Colors.purpleDark,
   },
 });

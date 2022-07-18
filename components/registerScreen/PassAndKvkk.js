@@ -1,16 +1,15 @@
 import { StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 import TextInput from "../TextInput";
 import CheckBox from "@react-native-community/checkbox";
 import Text from "../Text";
-import { atom, useAtom } from "jotai";
+import { useAtom } from "jotai";
+import store from "../../store/state";
 
-const RegisterPassword = atom("");
-const RegisterCheckBox = atom(false);
 const PassAndKvkk = () => {
-  const [toggleCheckBox, setToggleCheckBox] = useAtom(RegisterCheckBox);
-  const [password, setPassword] = useAtom(RegisterPassword);
+  const [toggleCheckBox, setToggleCheckBox] = useAtom(store.RegisterCheckBox);
+  const [password, setPassword] = useAtom(store.RegisterPassword);
 
   return (
     <View>

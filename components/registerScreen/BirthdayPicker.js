@@ -3,13 +3,12 @@ import React from "react";
 
 import Text from "../Text";
 import DatePicker from "../DatePicker";
-import { atom, useAtom } from "jotai";
+import { useAtom } from "jotai";
+import store from "../../store/state";
 
-const RegisterBirthDay = atom(new Date());
 const BirthdayPicker = () => {
-  const [birthday, setBirthday] = useAtom(RegisterBirthDay);
+  const [birthday, setBirthday] = useAtom(store.RegisterBirthDay);
 
-  console.log(birthday);
   return (
     <View>
       <Text
