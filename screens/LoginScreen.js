@@ -7,13 +7,24 @@ import Button from "../components/Button";
 import Colors from "../configs/Colors";
 import { useAtom } from "jotai";
 import store from "../store/state";
+import auth from "../api/auth";
 
 const LoginScreen = () => {
   const [nickname, setNickname] = useAtom(store.passwordAtom);
   const [password, setPassword] = useAtom(store.nicknameAtom);
+  const [isAuth, setIsAuth] = useAtom(store.Authed);
 
-  const HandlerLogin = () => {
-    console.log("Giriş yapıldı");
+  const HandlerLogin = async () => {
+    if (nickname === "" || password === "") return;
+
+    try {
+      const result = await auth.login(nickname, password);
+      if (!result) return;
+      setIsAuth(true);
+      console.log("auth is " + isAuth);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

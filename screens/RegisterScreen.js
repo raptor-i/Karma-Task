@@ -9,10 +9,15 @@ import PPimagePicker from "../components/registerScreen/PPimagePicker";
 import PassAndKvkk from "../components/registerScreen/PassAndKvkk";
 import { useAtom } from "jotai";
 import store from "../store/state";
+import registerApi from "../api/register";
 
 const RegisterScreen = ({ navigation }) => {
   const [page, setPage] = useState(0);
+  const [toggleCheckBox, setToggleCheckBox] = useAtom(store.RegisterCheckBox);
   const [name, setName] = useAtom(store.RegisterName);
+  const [bday, setBday] = useAtom(store.RegisterBirthDay);
+  const [pass, setPass] = useAtom(store.RegisterPassword);
+  const [image, setImage] = useAtom(store.RegisterImage);
 
   const HandlerNext = () => {
     if (page > 2) return;
@@ -27,7 +32,21 @@ const RegisterScreen = ({ navigation }) => {
     setPage(page - 1);
   };
 
-  const HandlerSubmit = () => {};
+  const HandlerSubmit = async () => {
+    if (
+      image === "" ||
+      pass === "" ||
+      bday === "" ||
+      name === "" ||
+      !toggleCheckBox
+    ) {
+      alert("Lütfen tüm bilgileri eksiksiz doldurduğundan emin ol");
+      return;
+    }
+
+    const data = { image, pass, bday, name };
+    const response = await registerApi.register(data);
+  };
 
   return (
     <ImageBackground
