@@ -19,7 +19,7 @@ export default function App() {
 
   console.log("auth is app : " + auth);
 
-  if (!auth) return <MainScreen />;
+  if (auth) return <MainScreen />;
   else return <WelcomeNavigator />;
 }
 
