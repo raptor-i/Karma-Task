@@ -8,6 +8,7 @@ const RegisterPassword = atom("");
 const RegisterCheckBox = atom(false);
 const RegisterImage = atom("");
 const Authed = atom(false);
+const CurrentUserData = atom([]);
 export default {
   RegisterBirthDay,
   RegisterName,
@@ -17,4 +18,5 @@ export default {
   passwordAtom,
   RegisterImage,
   Authed,
+  CurrentUserData,
 };

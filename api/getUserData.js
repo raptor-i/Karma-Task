@@ -1,12 +1,12 @@
 import client from "../client/client";
 
-const login = async (nickname, password) => {
+const getUserData = async (nickname) => {
   const response = await client
-    .post("/auth", { nickname, password })
+    .post("/getUserData", { nickname })
     .then((res) => {
       return res;
     });
   return response;
 };
 
-export default { login };
+export default { getUserData };

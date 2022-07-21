@@ -1,48 +1,24 @@
 import { StyleSheet, View, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Text from "../components/Text";
 import Colors from "../configs/Colors";
 import UserCard from "../components/UserCard";
+import api from "../api/getAllUsers";
 
-const UserData = [
-  {
-    Nickname: "Tester",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Fatih_Terim_2018.jpg/250px-Fatih_Terim_2018.jpg",
-    BirthDay: "2022-10-27",
-    id: 0,
-  },
-  {
-    Nickname: "Tester",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Fatih_Terim_2018.jpg/250px-Fatih_Terim_2018.jpg",
-    BirthDay: "2022-10-27",
-    id: 1,
-  },
-  {
-    Nickname: "Tester",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Fatih_Terim_2018.jpg/250px-Fatih_Terim_2018.jpg",
-    BirthDay: "2022-10-27",
-    id: 2,
-  },
-  {
-    Nickname: "Tester",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Fatih_Terim_2018.jpg/250px-Fatih_Terim_2018.jpg",
-    BirthDay: "2022-10-27",
-    id: 3,
-  },
-  {
-    Nickname: "Tester",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Fatih_Terim_2018.jpg/250px-Fatih_Terim_2018.jpg",
-    BirthDay: "2022-10-27",
-    id: 4,
-  },
-];
 const UserListings = () => {
+  const [UserData, setUserData] = useState([]);
+
+  const fetchData = async () => {
+    setUserData(await (await api.getUsers()).data);
+    console.log("All Users ====");
+    console.log(UserData);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={{ color: Colors.purple, fontWeight: "600" }}>
@@ -64,6 +40,8 @@ export default UserListings;
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    flex: 1,
+    backgroundColor: Colors.white,
   },
   ListContainer: {
     width: "85%",

@@ -8,20 +8,26 @@ import Colors from "../configs/Colors";
 import { useAtom } from "jotai";
 import store from "../store/state";
 import auth from "../api/auth";
+import api from "../api/getUserData";
+import io from "socket.io-client";
 
 const LoginScreen = () => {
   const [nickname, setNickname] = useAtom(store.passwordAtom);
   const [password, setPassword] = useAtom(store.nicknameAtom);
   const [isAuth, setIsAuth] = useAtom(store.Authed);
-
+  const [Data, setMyData] = useAtom(store.CurrentUserData);
+  const socket = io("http://10.0.2.2:9000");
   const HandlerLogin = async () => {
     if (nickname === "" || password === "") return;
 
     try {
       const result = await auth.login(nickname, password);
-      if (!result) return;
+      console.log("auth veriable is " + result.data);
+      if (!result.data) return;
       setIsAuth(true);
-      console.log("auth is " + isAuth);
+      const mydata = await api.getUserData(nickname);
+      setMyData(mydata.data);
+      socket.emit("join_room", { room: Data[0].nickname });
     } catch (error) {
       console.log(error);
     }

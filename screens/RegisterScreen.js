@@ -44,7 +44,13 @@ const RegisterScreen = ({ navigation }) => {
       return;
     }
 
-    const data = { image, pass, bday, name };
+    const data = {
+      id: 0,
+      nickname: name,
+      password: pass,
+      image,
+      birthday: bday,
+    };
     const response = await registerApi.register(data);
   };
 

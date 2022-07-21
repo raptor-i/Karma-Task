@@ -4,7 +4,7 @@ import React from "react";
 import Colors from "../configs/Colors";
 import Text from "./Text";
 import Icon from "./Icon";
-const Button = ({ onPress, title, style, name }) => {
+const Button = ({ onPress, title, style, name, textStyle }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
       {name && (
@@ -15,7 +15,7 @@ const Button = ({ onPress, title, style, name }) => {
           color={Colors.purpleDark}
         ></Icon>
       )}
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
