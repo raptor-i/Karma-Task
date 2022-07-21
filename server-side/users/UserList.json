@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "nickname": "admin",
+    "password": "$2b$10$tP.x2fGJqQIFS6Nvd19NauHqP2CNsx7HbhgeJRfos9SNtFokPigVa",
+    "birthday": "18.01.1995",
+    "image": "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/86/71/867186_v2.jpeg"
+  },
+  {
+    "id": 1,
+    "nickname": "sys",
+    "password": "$2b$10$tP.x2fGJqQIFS6Nvd19NauHqP2CNsx7HbhgeJRfos9SNtFokPigVa",
+    "birthday": "25.08.1998",
+    "image": "file:///data/user/0/com.karma/cache/rn_image_picker_lib_temp_9f7a3742-a079-44ae-84e8-8ff8065a894a.jpg"
+  },
+  {
+    "id": 2,
+    "nickname": "tester",
+    "password": "$2b$10$tP.x2fGJqQIFS6Nvd19NauHqP2CNsx7HbhgeJRfos9SNtFokPigVa",
+    "birthday": "25.08.2001",
+    "image": "https://www.lovethispic.com/uploaded_images/117570-Beautiful-View.jpg"
+  },
+  {
+    "id": 3,
+    "nickname": "ily",
+    "password": "$2b$10$42lVNgoS.2wXOu112xjXA.YEypCtNa2BJsG3TGDa5KHOc8tPhQxgm",
+    "image": "https://www.lovethispic.com/uploaded_images/117570-Beautiful-View.jpg",
+    "birthday": "20.05.2000"
+  },
+  {
+    "id": 4,
+    "nickname": "HSGAFHJAG",
+    "password": "$2b$10$em24tlQMIOxSJXTiFvVQy.vDV5Q9F4ehPf7wm5mNioKY6qqkzW9JO",
+    "image": "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/86/71/867186_v2.jpeg",
+    "birthday": "18.04.2010"
+  }
+]
