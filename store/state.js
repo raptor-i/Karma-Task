@@ -9,6 +9,9 @@ const RegisterCheckBox = atom(false);
 const RegisterImage = atom("");
 const Authed = atom(false);
 const CurrentUserData = atom([]);
+const notifications = atom([]);
+const socketAtom = atom();
+const isLoadingAtom = atom(false);
 export default {
   RegisterBirthDay,
   RegisterName,
@@ -19,4 +22,7 @@ export default {
   RegisterImage,
   Authed,
   CurrentUserData,
+  notifications,
+  socketAtom,
+  isLoadingAtom,
 };

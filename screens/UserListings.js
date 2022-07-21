@@ -9,14 +9,13 @@ import api from "../api/getAllUsers";
 const UserListings = () => {
   const [UserData, setUserData] = useState([]);
 
-  const fetchData = async () => {
-    setUserData(await (await api.getUsers()).data);
-    console.log("All Users ====");
-    console.log(UserData);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.getUsers();
+      setUserData(response.data);
+    };
     fetchData();
+    console.log(UserData);
   }, []);
 
   return (
@@ -45,5 +44,6 @@ const styles = StyleSheet.create({
   },
   ListContainer: {
     width: "85%",
+    marginBottom: 35,
   },
 });

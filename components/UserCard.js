@@ -1,33 +1,35 @@
 import { Image, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Colors from "../configs/Colors";
 import Text from "./Text";
 import Icon from "./Icon";
-import io from "socket.io-client";
 import { useAtom } from "jotai";
 import store from "../store/state";
+import apiSocket from "../api/socket";
 
-const fakeData = [
-  {
-    birthday: "18.01.1995",
-    id: 0,
-    image:
-      "file:///data/user/0/com.karma/cache/rn_image_picker_lib_temp_9f7a3742-a079-44ae-84e8-8ff8065a894a.jpg",
-    nickname: "admin",
-    password: "$2b$10$tP.x2fGJqQIFS6Nvd19NauHqP2CNsx7HbhgeJRfos9SNtFokPigVa",
-  },
-];
+const fakeData = {
+  birthday: "18.01.1995",
+  id: 0,
+  image:
+    "file:///data/user/0/com.karma/cache/rn_image_picker_lib_temp_9f7a3742-a079-44ae-84e8-8ff8065a894a.jpg",
+  nickname: "admin",
+  password: "$2b$10$tP.x2fGJqQIFS6Nvd19NauHqP2CNsx7HbhgeJRfos9SNtFokPigVa",
+};
 
 const UserCard = ({ UserData }) => {
   const [IconName, setIconName] = useState("heart-plus");
   const [user, setUser] = useAtom(store.CurrentUserData);
+  const socket = apiSocket.getSocket();
 
   const HandlerRequest = () => {
+    if (IconName === "account-clock") return;
     setIconName("account-clock");
-    const socket = io("http://10.0.2.2:9000");
-    socket.emit("join_room", { room: "admin" });
-    socket.emit("Send_Request", { room: UserData.nickname, Data: fakeData });
+    socket.emit("join_room", { room: " " + fakeData.nickname });
+    socket.emit("Send_Request", {
+      room: UserData.nickname,
+      Data: fakeData,
+    });
   };
 
   return (

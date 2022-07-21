@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,9 +7,17 @@ import UserListings from "./UserListings";
 import Icon from "../components/Icon";
 import Colors from "../configs/Colors";
 import NotificationsScreen from "./NotificationsScreen";
-
+import apiSocket from "../api/socket";
 const MainScreen = () => {
+  const socket = apiSocket.getSocket();
   const Tab = createBottomTabNavigator();
+
+  useEffect(() => {
+    socket.on("receive_req", (data) => {
+      console.log(data);
+      console.log("RECEIVED in Notification");
+    });
+  }, [socket]);
 
   return (
     <NavigationContainer>
@@ -33,10 +41,14 @@ const MainScreen = () => {
       >
         <Tab.Screen
           name="UserListings"
-          options={{ title: "User Listings" }}
+          options={{ title: "Keşfet" }}
           component={UserListings}
         />
-        <Tab.Screen name="Notifications" component={NotificationsScreen} />
+        <Tab.Screen
+          name="Notifications"
+          options={{ title: "Bildirimler" }}
+          component={NotificationsScreen}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

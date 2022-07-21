@@ -29,6 +29,7 @@ const NotificationCard = ({ UserData }) => {
           }}
         />
       </View>
+      <Text style={styles.Clock}>{UserData.time}</Text>
     </View>
   );
 };
@@ -41,11 +42,13 @@ const styles = StyleSheet.create({
     color: Colors.purpleGray,
   },
   BtnRed: {
-    backgroundColor: Colors.lightRed,
+    backgroundColor: Colors.white,
     width: 100,
     marginHorizontal: 20,
     height: 40,
     borderRadius: 15,
+    borderWidth: 3,
+    borderColor: Colors.lightRed,
     textAlign: "center",
   },
   BtnGreen: {
@@ -85,5 +88,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: Colors.black,
     marginHorizontal: 10,
+  },
+  Clock: {
+    position: "absolute",
+    color: Colors.purpleGray,
+    fontSize: 15,
+    right: 5,
+    bottom: 5,
   },
 });
